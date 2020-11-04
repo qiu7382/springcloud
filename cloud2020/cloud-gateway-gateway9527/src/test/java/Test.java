@@ -5,6 +5,7 @@ public class Test {
         System.out.println(Thread.currentThread().getName()+"\t"+"构造方法Test()");
     }
 
+    //双检锁
     public static Test getInstance(){
         if (instance == null){
             synchronized (Test.class){
