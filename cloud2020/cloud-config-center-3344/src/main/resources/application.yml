@@ -1,0 +1,20 @@
+server:
+  port: 3344
+spring:
+  application:
+    name: cloud-config-center
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/qiu7382/hello-world.git
+          search-paths:
+            - hello-world
+          force-pull: true
+          username: qiu7382
+          password: qiu113322
+      label: master
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
