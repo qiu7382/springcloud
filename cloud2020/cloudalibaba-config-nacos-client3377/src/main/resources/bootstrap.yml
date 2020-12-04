@@ -8,10 +8,12 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848 #Nacos服务注册中心地址
+        #server-addr: 192.168.48.128:1111 linux下nginx访问nacos集群地址
       config:
         server-addr: localhost:8848 #Nacos作为配置中心地址
+        #server-addr: 192.168.48.128:1111 linux下nginx访问nacos集群地址
         file-extension: yaml #指定yaml格式配置
-      #  group: TEST_GROUP
+        group: TEST_GROUP
         namespace: 3b503584-4122-431b-8986-f1d459f707f3
 
 #${prefix}-${spring.profile.active}.${file-extension}
