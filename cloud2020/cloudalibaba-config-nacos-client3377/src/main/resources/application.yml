@@ -2,4 +2,4 @@ spring:
   profiles:
    # active: dev
    # active: test #表示开发环境
-   active: info
+    active: info
