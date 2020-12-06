@@ -2,6 +2,7 @@ package com.qzh.springcloud.alibaba.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
+import com.qzh.springcloud.alibaba.myhandler.CustomerBlockHandler;
 import com.qzh.springcloud.entities.CommonResult;
 import com.qzh.springcloud.entities.Payment;
 import lombok.extern.slf4j.Slf4j;
@@ -35,4 +36,11 @@ public class RateLimitController {
         return new CommonResult(200,"按url限流测试", new Payment(2020L,"serial001"));
     }
 
+    //指定特定类CustomerBlockHandler,方法handlerException2,兜底
+    //业务类实现解耦
+    @GetMapping("/retaLimit/customerBlockHandler")
+    @SentinelResource(value = "customerBlockHandler",blockHandlerClass = CustomerBlockHandler.class, blockHandler = "handlerException2")
+    public CommonResult customerBlockHandler(){
+        return new CommonResult(200,"按url限流测试", new Payment(2020L,"serial001"));
+    }
 }
