@@ -1,7 +1,10 @@
 package com.qzh.springcloud.alibaba.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -45,4 +48,18 @@ public class FlowLimitController {
 
         log.info("test 测试异常数"); return "------testE";
     }
+
+    //热点key限流降级
+    //设定参数的QPS进行降级,热点key的下标,QPS的阈值,页面恢复时长
+    @GetMapping("/testHotKey")
+    @SentinelResource(value = "testHotKey", blockHandler = "deal_testHotKey")
+    public String testHotKey(@RequestParam(value = "p1", required = false) String p1,
+                            @RequestParam(value = "p2", required = false) String p2){
+        log.info("----testHotKey "+ p1 +", " + p2);
+        return "--------testHotKey";
+    }
+    public String deal_testHotKey(String p1, String p2, BlockException exception){
+        return "deal_testHotKey-------服务降级/(ㄒoㄒ)/~~";
+    }
+
 }
