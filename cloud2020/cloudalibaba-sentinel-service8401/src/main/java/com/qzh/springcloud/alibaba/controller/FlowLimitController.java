@@ -51,6 +51,7 @@ public class FlowLimitController {
 
     //热点key限流降级
     //设定参数的QPS进行降级,热点key的下标,QPS的阈值,页面恢复时长
+    //参数例外项 sentinel控制台某个热点key的特定值下设定限流规则
     @GetMapping("/testHotKey")
     @SentinelResource(value = "testHotKey", blockHandler = "deal_testHotKey")
     public String testHotKey(@RequestParam(value = "p1", required = false) String p1,
