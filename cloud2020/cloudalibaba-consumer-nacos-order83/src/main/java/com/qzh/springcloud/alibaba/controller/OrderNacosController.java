@@ -1,6 +1,5 @@
 package com.qzh.springcloud.alibaba.controller;
 
-import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.qzh.springcloud.entities.CommonResult;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +21,7 @@ public class OrderNacosController {
     private String serverURL;
 
     @GetMapping(value = "/consumer/payment/nacos/{id}")
-    @SentinelResource(value = "paymentInfo", fallback = "handleException",blockHandler = "handleException")
+ //   @SentinelResource(value = "paymentInfo", fallback = "handleException",blockHandler = "handleException")
     public String paymentInfo(@PathVariable("id") Integer id){
         return restTemplate.getForObject(serverURL + "/payment/nacos/" + id, String.class);
     }
