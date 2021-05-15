@@ -23,6 +23,7 @@ public class PaymentController {
     @Value("${server.port}")
     private String serverPort;
 
+    //展示服务注册的信息，服务名
     @Resource
     private DiscoveryClient discoveryClient;
 
