@@ -32,6 +32,7 @@ eureka:
       defaultZone: http://localhost:7001/eureka/
   instance:
     instance-id: payment8001
+    #显示ip地址
     prefer-ip-address: true
     #客户端向服务端发送心跳间隔，单位为秒，默认30秒
     lease-renewal-interval-in-seconds: 1
