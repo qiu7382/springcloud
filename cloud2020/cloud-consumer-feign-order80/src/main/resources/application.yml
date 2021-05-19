@@ -1,11 +1,19 @@
 server:
   port: 80
+
+spring:
+  application:
+    name: cloud-feignOrder-service
+
 eureka:
   client:
     registry-with-eureka: false
     service-url:
-      defaultZone:  http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
-
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    instance-id: feignOrder80
+    #显示ip地址
+    prefer-ip-address: true
 ribbon:
   #建立连接时间
   ReadTimeout: 5000
