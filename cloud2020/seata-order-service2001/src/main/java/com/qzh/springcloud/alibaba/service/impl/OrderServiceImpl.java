@@ -49,6 +49,5 @@ public class OrderServiceImpl implements OrderService {
 
         log.info("-------下订单结束------");
 
-        log.info("-----");
     }
 }
